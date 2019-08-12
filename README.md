@@ -22,14 +22,9 @@ npm run starwin
 To do smart path joining of relative paths **Path** was used here.
 Also the following npm modules haven been used to have colorized debuggin enabled:
 
-> **Debug**
-> Used to display information in debug mode (replaced console.log)
-
-> **Chalk**
-> Colorize debug messages
-
-> **Morgan**
-> Used for http traffic logging
+1) **Debug**: Used to display information in debug mode (replaced console.log)
+2) **Chalk**: Colorize debug messages
+3) **Morgan**: Used for http traffic logging
 
 #### Linting
 
