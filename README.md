@@ -1,6 +1,6 @@
-# Express.js - Native Web Application :cyclone:
+# :cyclone: Express.js - Native Web Application 
 
-## How to run the App
+### How to run the App
 
 1) Just run a simple
 ```bash
@@ -13,9 +13,9 @@ If you're on **Windows** use the following home grown script:
 npm run win-start
 ```
 
-## Used tooling setup
+### Used tooling setup
 
-### Debugging
+#### Debugging
 
 To do smart path joining of relative paths **Path** was used here.
 Also the following npm modules haven been used to have colorized debuggin enabled:
@@ -29,4 +29,4 @@ Also the following npm modules haven been used to have colorized debuggin enable
 > **Morgan**
 > Used for http traffic logging
 
-### Linting
+#### Linting
