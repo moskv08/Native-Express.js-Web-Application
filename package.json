@@ -4,7 +4,9 @@
   "description": "A web application build with Node.js and Express",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG=* node app.js",
+    "win-start": "set DEBUG=* & node app.js"
   },
   "keywords": [
     "node"
