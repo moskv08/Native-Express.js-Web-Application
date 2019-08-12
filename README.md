@@ -1,4 +1,6 @@
-# :cyclone: Express.js - Native Web Application 
+# :cyclone: Express.js - Native Web Application
+
+### Introduction
 
 ### How to run the App
 
@@ -10,10 +12,10 @@ npm install
 For **Linux** user simple type **npm start**.
 If you're on **Windows** use the following home grown script:
 ```bash
-npm run win-start
+npm run starwin
 ```
 
-### Used tooling setup
+### Required tooling setup
 
 #### Debugging
 
@@ -32,3 +34,26 @@ Also the following npm modules haven been used to have colorized debuggin enable
 #### Linting
 
 Within this Project **ESLint** with the [AirBnB Style Guide](https://github.com/airbnb/javascript) is used.
+
+So the _.eslintrc.js_ configuration file looks like as follows:
+```javascript
+module.exports = {
+  env: {
+    browser: true,
+    es6: true,
+  },
+  extends: [
+    'airbnb-base',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  rules: {
+  },
+};
+```
