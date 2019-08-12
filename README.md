@@ -30,3 +30,5 @@ Also the following npm modules haven been used to have colorized debuggin enable
 > Used for http traffic logging
 
 #### Linting
+
+Within this Project **ESLint** with the [AirBnB Style Guide](https://github.com/airbnb/javascript) is used.
