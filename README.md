@@ -1,15 +1,32 @@
-# Native Express.js Web Application
+# Express.js - Native Web Application :cyclone:
 
-## Tooling setup
+## How to run the App
 
-### General
+1) Just run a simple
+```bash
+npm install
+```
 
-- Path: Do smart path joining of relative paths
+For **Linux** user simple type **npm start**.
+If you're on **Windows** use the following home grown script:
+```bash
+npm run win-start
+```
 
-### Debug mode
+## Used tooling setup
 
-- Debug: Used to display information in debug mode (replaced console.log)
-- Chalk: Colorize debug messages
-- Morgan: Used for http traffic logging
+### Debugging
+
+To do smart path joining of relative paths **Path** was used here.
+Also the following npm modules haven been used to have colorized debuggin enabled:
+
+> **Debug**
+> Used to display information in debug mode (replaced console.log)
+
+> **Chalk**
+> Colorize debug messages
+
+> **Morgan**
+> Used for http traffic logging
 
 ### Linting
