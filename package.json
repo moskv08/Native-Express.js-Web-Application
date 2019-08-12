@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "DEBUG=app node app.js",
-    "win-start": "set DEBUG=* & nodemon app.js",
+    "start": "DEBUG=app nodemon app.js",
+    "starwin": "set DEBUG=* & nodemon app.js",
     "lint": "./node_modules/.bin/eslint app.js"
   },
   "keywords": [
