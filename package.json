@@ -27,5 +27,14 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "nodemon": "^1.19.1"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": ["node_modules/**/node_modules"],
+    "delay": "2000",
+    "env": {
+      "NODE_ENT": "development",
+      "PORT": "4000"
+    }
   }
 }
