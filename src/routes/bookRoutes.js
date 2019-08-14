@@ -27,11 +27,22 @@ const bookRouter = express.Router();
 // Define get routes
 bookRouter.route('/')
   .get((req, res) => {
-    res.render('books', { title: 'Books', nav: [{ title: 'Books', link: '/books' }], books });
+    res.render('books',
+      {
+        title: 'Books',
+        nav: [{ title: 'Books', link: '/books' }],
+        books,
+      });
   });
 
-bookRouter.route('/single').get((req, res) => {
-  res.send('Hi single book');
+bookRouter.route('/:1').get((req, res) => {
+  const { id } = req.params;
+  res.render('book',
+    {
+      title: 'Books',
+      nav: [{ title: 'Books', link: '/books' }],
+      book: books[id],
+    });
 });
 
 module.exports = bookRouter;
