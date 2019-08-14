@@ -5,8 +5,6 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 
-const bookRouter = require('./src/routes/bookRoutes');
-
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -23,13 +21,20 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-// use Book router
-app.use('/books', bookRouter);
 
+const nav = [
+  { title: 'Books', link: '/books' },
+  { title: 'Authors', link: '/authors' },
+];
+
+// use Book router
+const bookRouter = require('./src/routes/bookRoutes')(nav);
+
+app.use('/books', bookRouter);
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Thug Life', nav: [{ title: 'Books', link: '/books' }] });
+  res.render('index', { title: 'Thug Life', nav });
 });
 
 app.listen(port, () => {
-  debug(`Listening on port ${chalk.green(port)}`);
+  debug(chalk.green(`Listening on port: ${port}`));
 });
