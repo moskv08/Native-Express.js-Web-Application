@@ -2,9 +2,9 @@
 
 ### Introduction
 
-This is native Node.js web application using the web framework **Express.js** with an _EJS_ template engine.
+This is a native **Node.js** web application using the web framework _Express.js_ with an _EJS_ template engine.
 **PostgreSQL** serves as the backend database solution. I decided on purpose not to use the classic **MEAN Stack* as I just wanted to
-experiment with different kind of stack here.
+experiment with a different kind of stack here. To have a strong use case is not the main goal during this small side project.
 
 ### How to run the App
 
