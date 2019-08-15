@@ -2,6 +2,10 @@
 
 ### Introduction
 
+This is native Node.js web application using the web framework **Express.js** with an _EJS_ template engine.
+**PostgreSQL** serves as the backend database solution. I decided on purpose not to use the classic **MEAN Stack* as I just wanted to
+experiment with different kind of stack here.
+
 ### How to run the App
 
 1) Just run a simple
@@ -9,8 +13,9 @@
 npm install
 ```
 
-For **Linux** user simple type **npm start**.
+**Linux** users simply type **npm start** to spin up the app.
 If you're on **Windows** use the following home grown script:
+
 ```bash
 npm run starwin
 ```
