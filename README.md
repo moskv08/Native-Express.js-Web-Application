@@ -13,6 +13,12 @@ experiment with a different kind of stack here. To have a strong use case is not
 npm install
 ```
 
+2) Setup the database and make use of the [PGPASSFILE](https://www.postgresql.org/docs/9.1/libpq-pgpass.html) to set db connection password.
+```bash
+hostname:port:database:username:password
+```
+Alternatively define your password also in the _.env_ file (Not recommended).
+
 **Linux** users simply type **npm start** to spin up the app.
 If you're on **Windows** use the following home grown script:
 
