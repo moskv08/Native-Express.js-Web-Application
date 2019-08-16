@@ -1,5 +1,6 @@
 -- Database: ExpressDB
--- DROP DATABASE "ExpressDB";
+
+DROP DATABASE "ExpressDB";
 CREATE DATABASE "ExpressDB"
     WITH 
     OWNER = postgres
@@ -9,33 +10,64 @@ CREATE DATABASE "ExpressDB"
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
-/* Books table */
-CREATE TABLE IF NOT EXISTS books(
-   	id serial PRIMARY KEY,
-	isbn VARCHAR (15) NOT NULL,
-   	title VARCHAR (50) NOT NULL,
-   	genre VARCHAR (20) NOT NULL,
-	author VARCHAR (50) NOT NULL
+-- Genres table
+CREATE TABLE IF NOT EXISTS genres(
+   	genre_id serial PRIMARY KEY, -- implicit primary key constraint
+   	genre VARCHAR (50) NOT NULL
 );
-
-/* Genre table */
-CREATE TABLE IF NOT EXISTS genre(
-   	id serial PRIMARY KEY,
-   	title VARCHAR (50) NOT NULL,
-);
-
-/* Author table */
+DROP TABLE authors
+-- Authors table
 CREATE TABLE IF NOT EXISTS authors(
-   	id serial PRIMARY KEY,
+   	author_id int NOT NULL UNIQUE PRIMARY KEY, -- implicit primary key constraint
    	surname VARCHAR (50) NOT NULL,
-   	givenname VARCHAR (20) NOT NULL,
+   	givenname VARCHAR (20) NOT NULL
 );
 
+-- Books table
+CREATE TABLE IF NOT EXISTS books(
+   	isbn int NOT NULL UNIQUE PRIMARY KEY, -- implicit primary key constraint
+   	title VARCHAR (50) NOT NULL,
+	genre_id integer not null references genres(genre_id),
+	author_id integer not null references authors(author_id)
+);
 
+-- Mapping table for books and authors
+-- CREATE TABLE books_authors (
+-- 	book_id    	int REFERENCES books (isbn) ON UPDATE CASCADE ON DELETE CASCADE,
+-- 	author_id 	int REFERENCES authors (author_id) ON UPDATE CASCADE,
+-- 	CONSTRAINT book_author_pkey PRIMARY KEY (book_id, author_id)  -- explicit pk
+-- );
 
-/* Add books to table*/
-INSERT INTO books
-       [ ( column_name [, ...] ) ]
-       VALUES ( value [, ...] )
+/* -------------------------------------------------------------------------------------- */
+-- Insert Genres
+INSERT INTO genres (genre) VALUES
+    ('Crime'),('Romance'),('Fiction'),('Adventure'),('Kids'),('Biography');
+
+-- Insert Authors
+INSERT INTO authors (author_id, surname, givenname) VALUES
+    ('1', 'Hezard', 'Peter'),
+	('2', 'Stripes', 'Marry'), 
+	('3', 'Hitchcock', 'Alfred');
+	
+-- Insert Books
+INSERT INTO books (isbn, title, genre_id, author_id) VALUES
+    ('888123420', 'Hope in the Wind', (SELECT genre_id from genre WHERE genre='Romance'), 1),
+	('223235232', 'The art of war', (SELECT genre_id from genre WHERE genre='Biography'), 1),
+	('200123948', 'Lord of the rings', (SELECT genre_id from genre WHERE genre='Fiction'), 1),
+	('900238142', 'Duty of Love', (SELECT genre_id from genre WHERE genre='Romance'), 3),
+	('391798736', 'Backyard Thugs', (SELECT genre_id from genre WHERE genre='Crime'), 2),
+	('599987333', 'Piggy Bank robbery', (SELECT genre_id from genre WHERE genre='Crime'), 2),
+	('230097415', 'Moo the cat', (SELECT genre_id from genre WHERE genre='Kids'), 3);
+
+	
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
 	   
 	   
