@@ -1,47 +1,32 @@
 // Bring in modules
 const express = require('express');
 const { Client } = require('pg');
-const debug = require('debug')('app:bookRoutes');
-const chalk = require('chalk');
 
 const bookRouter = express.Router();
 
 function router(nav) {
-  const books = [
-    {
-      title: 'The holly grail',
-      genre: 'Fantasy',
-      author: 'John Doe',
-      read: false,
-    },
-    {
-      title: 'Life after',
-      genre: 'Romance',
-      author: 'Jennifer Rowl',
-      read: false,
-    },
-    {
-      title: 'Peter Pan',
-      genre: 'Fantasy',
-      author: 'Marry Stripes',
-      read: false,
-    },
-  ];
 
   // Get routes for a list of books
   bookRouter.route('/')
     .get((req, res) => {
-      const client = new Client();
-      client.connect();
-      client.query('SELECT * FROM books').then((result) => {
+
+      (async function query() {
+        // Connect
+        const client = new Client();
+        await client.connect();
+
+        // Querry
+        const result = await client.query('SELECT * FROM books')
         res.render('bookListView',
           {
             title: 'List of Books',
             nav,
             books: result.rows,
           });
-        client.end();
-      }).catch((e) => debug(chalk.red(e.stack)));
+
+        // Disconnect
+        await client.end();
+      }());
     });
 
   // Get routes for a single book
