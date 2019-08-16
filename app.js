@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Bring in modules
 const express = require('express');
 const chalk = require('chalk');
@@ -20,7 +21,6 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
 // Set views directory & template engine
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
-
 
 const nav = [
   { title: 'Books', link: '/books' },
