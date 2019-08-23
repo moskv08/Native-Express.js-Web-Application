@@ -22,15 +22,11 @@ CREATE TYPE genres AS ENUM ('Crime','Romance','Fiction','Adventure','Kids','Biog
 CREATE TABLE IF NOT EXISTS books(
    	isbn INT NOT NULL UNIQUE PRIMARY KEY, -- implicit primary key constraint
    	title VARCHAR (50) NOT NULL,
-	genre genres NOT NULL DEFAULT 'Undefined'
+	genre genres NOT NULL DEFAULT 'Undefined',
 	author_id INTEGER NOT NULL REFERENCES authors(author_id)
 );
 
 /* -------------------------------------------------------------------------------------- */
--- Insert Genres
--- INSERT INTO genres (genre) VALUES
-    -- ('Crime'),('Romance'),('Fiction'),('Adventure'),('Kids'),('Biography');
-
 -- Insert Authors
 INSERT INTO authors (author_id, surname, givenname) VALUES
     ('1', 'Hezard', 'Peter'),
