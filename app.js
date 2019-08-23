@@ -27,12 +27,14 @@ const nav = [
   { title: 'Authors', link: '/authors' },
 ];
 
-// use Book router
+// Routing
 const bookRouter = require('./src/routes/bookRoutes')(nav);
+const authorRouter = require('./src/routes/authorRoutes')(nav);
 
 app.use('/books', bookRouter);
+app.use('/authors', authorRouter);
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Thug Life', nav });
+  res.render('index', { title: 'Welcome to BookRingo', nav });
 });
 
 app.listen(port, () => {
