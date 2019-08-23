@@ -1,43 +1,40 @@
 // Bring in modules
 const express = require('express');
-const { Client } = require('pg');
+// Bring in dbcontext
+const db = require('../db');
 
 const bookRouter = express.Router();
 
 function router(nav) {
-
   // Get routes for a list of books
   bookRouter.route('/')
     .get((req, res) => {
-
       (async function query() {
-        // Connect
-        const client = new Client();
-        await client.connect();
-
         // Querry
-        const result = await client.query('SELECT * FROM books')
+        const { rows } = await db.query('SELECT * FROM books');
         res.render('bookListView',
           {
             title: 'List of Books',
             nav,
-            books: result.rows,
+            books: rows,
           });
-
-        // Disconnect
-        await client.end();
       }());
     });
 
   // Get routes for a single book
   bookRouter.route('/:id').get((req, res) => {
-    const { id } = req.params;
-    res.render('bookView',
-      {
-        title: 'Book',
-        nav,
-        book: books[id],
-      });
+    (async function query() {
+      const { id } = req.params;
+
+      // Querry
+      const { rows } = await db.query('SELECT * FROM books WHERE isbn = $1', [id]);
+      res.render('bookView',
+        {
+          title: 'Book',
+          nav,
+          book: rows,
+        });
+    }());
   });
 
   return bookRouter;
