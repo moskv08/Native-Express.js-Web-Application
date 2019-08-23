@@ -100,8 +100,8 @@
               <h3><%=books[i].title%></h3>
               <div class="row">
                 <div class="col-xs-9">
-                  <h4><span class="label label-default"><%=books[i].author%></span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted">2 hours ago  • 
+                  <h4><span class="label label-default"><%=books[i].genre%></span></h4><h4>
+                  <small style="font-family:courier,'new courier';" class="text-muted">Author: <%=books[i].genre%>
                   <a href="/books/<%=books[i].isbn%>" class="text-muted">Read More</a></small>
                   </h4></div>
                 <div class="col-xs-3"></div>
@@ -111,8 +111,7 @@
           </div>
           <hr>
           <%}%>
-          <!--/stories-->
-          <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>         
+          <!--/stories-->     
         </div>
       </div>                                             
    	</div><!--/col-12-->
