@@ -6,6 +6,8 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 
+const mountRoutes = require('./src/routes');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -22,20 +24,8 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-const nav = [
-  { title: 'Books', link: '/books' },
-  { title: 'Authors', link: '/authors' },
-];
-
 // Routing
-const bookRouter = require('./src/routes/bookRoutes')(nav);
-const authorRouter = require('./src/routes/authorRoutes')(nav);
-
-app.use('/books', bookRouter);
-app.use('/authors', authorRouter);
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Welcome to BookRingo', nav });
-});
+mountRoutes(app);
 
 app.listen(port, () => {
   debug(chalk.green(`Listening on port: ${port}`));

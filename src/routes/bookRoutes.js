@@ -1,5 +1,7 @@
 // Bring in modules
 const express = require('express');
+// const chalk = require('chalk');
+// const debug = require('debug')('app:bookRoutes');
 // Bring in dbcontext
 const db = require('../db');
 
@@ -12,11 +14,11 @@ function router(nav) {
       (async function query() {
         // Querry
         const { rows } = await db.query('SELECT isbn, title, genre FROM books');
-        [req.books] = rows;
+        req.books = rows;
         next();
       }());
     }).get((req, res) => {
-      res.render('bookListView',
+      res.render('books/bookListView',
         {
           title: 'List of Books',
           nav,
@@ -36,7 +38,7 @@ function router(nav) {
       }());
     })
     .get((req, res) => {
-      res.render('bookView',
+      res.render('books/bookItemView',
         {
           title: 'Book',
           nav,
