@@ -4,11 +4,13 @@ const nav = [
   { title: 'Authors', link: '/authors' },
 ];
 
+const authRouter = require('./authRoutes');
 const bookRouter = require('./bookRoutes')(nav);
 const authorRouter = require('./authorRoutes')(nav);
 
-module.exports = (app) => {
+const mountRoutes = (app) => {
   // Router
+  app.use('/auth', authRouter);
   app.use('/books', bookRouter);
   app.use('/authors', authorRouter);
 
@@ -17,3 +19,5 @@ module.exports = (app) => {
     res.render('index', { title: 'Welcome to BookRingo', nav });
   });
 };
+
+module.exports = mountRoutes;
