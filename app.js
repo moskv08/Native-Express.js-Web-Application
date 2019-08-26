@@ -5,6 +5,7 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const mountRoutes = require('./src/routes');
 
@@ -13,6 +14,10 @@ const port = process.env.PORT || 3000;
 
 // Log web traffic to console
 app.use(morgan('tiny'));
+
+// Bring in body parser for post methods
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // bring in static files
 app.use(express.static(path.join(__dirname, '/public/')));

@@ -4,7 +4,7 @@ const nav = [
   { title: 'Authors', link: '/authors' },
 ];
 
-const authRouter = require('./authRoutes');
+const authRouter = require('./authRoutes')(nav);
 const bookRouter = require('./bookRoutes')(nav);
 const authorRouter = require('./authorRoutes')(nav);
 
