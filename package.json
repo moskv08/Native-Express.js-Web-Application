@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "DEBUG=app:* nodemon app.js",
-    "starwin": "set DEBUG=* & nodemon app.js",
+    "starwin": "set DEBUG=app:* & nodemon app.js",
     "lint": "./node_modules/.bin/eslint app.js src/routes/**"
   },
   "keywords": [
@@ -18,7 +18,7 @@
     "bootstrap": "^3.4.1",
     "chalk": "^2.4.2",
     "debug": "^4.1.1",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.1.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "jquery": "^3.4.1",
@@ -26,7 +26,7 @@
     "pg": "^7.12.1"
   },
   "devDependencies": {
-    "eslint": "^6.1.0",
+    "eslint": "^6.2.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "nodemon": "^1.19.1"
