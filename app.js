@@ -6,6 +6,8 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 const mountRoutes = require('./src/routes');
 
@@ -18,6 +20,10 @@ app.use(morgan('tiny'));
 // Bring in body parser for post methods
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({ secret: 'library' }));
+
+require('./src/config/passport.js')(app);
 
 // bring in static files
 app.use(express.static(path.join(__dirname, '/public/')));
