@@ -26,6 +26,13 @@ CREATE TABLE IF NOT EXISTS books(
 	author_id INTEGER NOT NULL REFERENCES authors(author_id)
 );
 
+-- User table
+CREATE TABLE IF NOT EXISTS users(
+	userid SERIAL NOT NULL UNIQUE PRIMARY KEY,
+	email TEXT UNIQUE NOT NULL,
+	password TEXT NOT NULL
+);
+
 /* -------------------------------------------------------------------------------------- */
 -- Insert Authors
 INSERT INTO authors (author_id, surname, givenname) VALUES
@@ -42,9 +49,7 @@ INSERT INTO books (isbn, title, genre, author_id) VALUES
 	('391798736', 'Backyard Thugs', 'Crime', 2),
 	('599987333', 'Piggy Bank robbery', 'Crime', 2),
 	('230097415', 'Moo the cat', 'Kids', 3);
-
-	   
-	   
+   
 	   
 	   
 	   
