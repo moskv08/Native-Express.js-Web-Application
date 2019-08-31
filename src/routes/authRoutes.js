@@ -9,8 +9,6 @@ const authRouter = express.Router();
 function router() {
   authRouter.route('/signUp')
     .post((req, res) => {
-      debug(req.body);
-
       // Create the user
       const { email, password } = req.body;
       (async function addUser() {
@@ -20,8 +18,13 @@ function router() {
         try {
           await db.query('BEGIN');
           const { rows } = await db.query(query, values);
-          [req.users] = rows;
+          // [req.users] = rows;
           await db.query('COMMIT');
+          // Redirect
+          req.login(rows[0], () => {
+            res.redirect('/auth/profile');
+          });
+
           debug(rows);
         } catch (error) {
           await db.query('ROLLBACK');
@@ -29,9 +32,6 @@ function router() {
         }
       }()).catch((e) => debug(e.stack));
 
-      req.login(req.body, () => {
-        res.redirect('/auth/profile');
-      });
     });
 
   authRouter.route('/profile')
