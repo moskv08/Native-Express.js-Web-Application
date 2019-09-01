@@ -31,7 +31,6 @@ function router() {
           throw error;
         }
       }()).catch((e) => debug(e.stack));
-
     });
 
   authRouter.route('/profile')

@@ -6,6 +6,14 @@ This is a native **Node.js** web application using the web framework _Express.js
 **PostgreSQL** serves as the backend database solution. I decided on purpose not to use the classic **MEAN Stack* as I just wanted to
 experiment with a different kind of stack here. To have a strong use case is not the main goal during this small side project.
 
+#### Middleware
+
+As authentication middleware [Passport](http://www.passportjs.org) was used in these project. It is designed to serve a singular purpose: authenticate requests.  
+```
+# Define your prefered passport strategy (Authentication mechanisms) here:
+src/config/strategies
+```
+
 ### How to run the App
 
 1) Just run a simple
@@ -26,7 +34,7 @@ If you're on **Windows** use the following home grown script:
 npm run starwin
 ```
 
-### Required tooling setup
+### Tooling setup
 
 #### Debugging
 
