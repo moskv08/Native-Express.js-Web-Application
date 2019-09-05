@@ -34,6 +34,7 @@ function router(nav) {
         }
       }()).catch((e) => debug(e.stack));
     });
+  // Sign in a user
   authRouter.route('/signin')
     .get((req, res) => {
       res.render('signin', {
@@ -48,6 +49,14 @@ function router(nav) {
     }));
   // Display the user profile
   authRouter.route('/profile')
+    // Protect route (user validation)
+    .all((req, res, next) => {
+      if (req.user) {
+        next();
+      } else {
+        res.redirect('/');
+      }
+    })
     .get((req, res) => {
       res.json(req.user);
     });
