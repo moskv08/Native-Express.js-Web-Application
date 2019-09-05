@@ -1,12 +1,14 @@
 const debug = require('debug')('app:authRoutes');
 // Bring in modules
 const express = require('express');
+const passport = require('passport');
 // Bring in dbcontext
 const db = require('../db');
 
 const authRouter = express.Router();
 
-function router() {
+function router(nav) {
+  // Create & sign in a user
   authRouter.route('/signUp')
     .post((req, res) => {
       // Create the user
@@ -32,7 +34,19 @@ function router() {
         }
       }()).catch((e) => debug(e.stack));
     });
-
+  authRouter.route('/signin')
+    .get((req, res) => {
+      res.render('signin', {
+        nav,
+        title: 'Sign In',
+      });
+    })
+    .post(passport.authenticate('local', {
+      successRedirect: '/auth/profile',
+      failureRedirect: '/auth/signin',
+      failureFlash: true,
+    }));
+  // Display the user profile
   authRouter.route('/profile')
     .get((req, res) => {
       res.json(req.user);
