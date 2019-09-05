@@ -1,7 +1,7 @@
 // deals with user information in sessions/cookies
 const passport = require('passport');
 // Bring the passport strategy
-require('./strategies/local.strategy');
+require('./strategies/local.strategy')();
 
 function passportConfig(app) {
   // Initialize
