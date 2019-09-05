@@ -7,6 +7,14 @@ const db = require('../db');
 const authorRouter = express.Router();
 
 function router(nav) {
+  // Protect the route
+  authorRouter.use((req, res, next) => {
+    if (req.user) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  });
   // Get routes for a list of books
   authorRouter.route('/')
     .all((req, res, next) => {
