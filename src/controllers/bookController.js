@@ -3,6 +3,15 @@ const debug = require('debug')('app:bookController');
 const db = require('../db');
 
 function bookController(nav) {
+
+  function useMiddleware(req, res, next) {
+    if (req.user) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  }
+
   // Get all books from database
   function getAllBooks(req, res) {
     (async function query() {
@@ -37,6 +46,7 @@ function bookController(nav) {
   return {
     getAllBooks,
     getBookById,
+    useMiddleware,
   };
 }
 
