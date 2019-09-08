@@ -1,22 +1,16 @@
 // Bring in modules
 const express = require('express');
 const bookController = require('../controllers/bookController');
-// Bring in dbcontext
-const db = require('../db');
 
 const bookRouter = express.Router();
 
 function router(nav) {
 
-  const { getAllBooks, getBookById } = bookController(nav);
+  // Bring functions as objects
+  const { getAllBooks, getBookById, useMiddleware } = bookController(nav);
+
   // Protect the route
-  bookRouter.use((req, res, next) => {
-    if (req.user) {
-      next();
-    } else {
-      res.redirect('/');
-    }
-  });
+  bookRouter.use(useMiddleware);
 
   // Get routes for a list of books
   bookRouter.route('/').get(getAllBooks);
