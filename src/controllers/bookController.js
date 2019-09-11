@@ -2,8 +2,8 @@ const debug = require('debug')('app:bookController');
 // Bring in dbcontext
 const db = require('../db');
 
-function bookController(nav) {
-
+function bookController(bookService, nav) {
+  // Protect routes
   function useMiddleware(req, res, next) {
     if (req.user) {
       next();
@@ -15,9 +15,17 @@ function bookController(nav) {
   // Get all books from database
   function getAllBooks(req, res) {
     (async function query() {
+      // // Querry
+      // const { rows } = await db.query('SELECT isbn, title, genre FROM books');
+      // req.books = rows;
+      // res.render('books/bookListView',
+      //   {
+      //     title: 'List of Books',
+      //     nav,
+      //     books: req.books,
+      //   });
       // Querry
-      const { rows } = await db.query('SELECT isbn, title, genre FROM books');
-      req.books = rows;
+      req.books = await bookService.getAllBooks();
       res.render('books/bookListView',
         {
           title: 'List of Books',
