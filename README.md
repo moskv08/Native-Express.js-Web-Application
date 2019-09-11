@@ -1,4 +1,4 @@
-# :cyclone: Express.js - Native Web Application
+# Express.js - Native Web Application :cyclone:  
 
 ### Introduction
 
@@ -13,6 +13,8 @@ As authentication middleware [Passport](http://www.passportjs.org) was used in t
 # Define your prefered passport strategy (Authentication mechanisms) here:
 src/config/strategies
 ```
+
+The handle third-party-API's the promise based HTTP client [Axios](https://www.npmjs.com/package/axios) was used.
 
 #### Debugging
 
