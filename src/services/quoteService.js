@@ -7,14 +7,14 @@ function quoteService() {
     return new Promise((resolve, reject) => {
       axios.get('https://quotes.rest/qod')
         .then((response) => {
-          debug(response);
-          resolve({ response });
+          // Get the specifc quote
+          const result = response.data.contents.quotes[0].quote;
+          resolve({ result });
         })
         .catch((error) => {
           reject(error);
           debug(error);
         });
-
     });
   }
   return { getQuote };

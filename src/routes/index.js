@@ -1,8 +1,11 @@
+const debug = require('debug')('app');
 // Main router modul
 const nav = [
   { title: 'Books', link: '/books' },
   { title: 'Authors', link: '/authors' },
 ];
+
+const quoteService = require('../services/quoteService');
 
 const authRouter = require('./authRoutes')(nav);
 const bookRouter = require('./bookRoutes')(nav);
@@ -16,7 +19,11 @@ const mountRoutes = (app) => {
 
   // Start page
   app.get('/', (req, res) => {
-    res.render('index', { title: 'Welcome to BookRingo', nav });
+    (async function query() {
+      const quote = await quoteService.getQuote();
+      debug(quote);
+      res.render('index', { title: 'Welcome to BookRingo', quote, nav });
+    }());
   });
 };
 
