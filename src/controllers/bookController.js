@@ -1,4 +1,4 @@
-const debug = require('debug')('app:bookController');
+// const debug = require('debug')('app:bookController');
 // Bring in dbcontext
 const db = require('../db');
 
@@ -15,17 +15,9 @@ function bookController(bookService, nav) {
   // Get all books from database
   function getAllBooks(req, res) {
     (async function query() {
-      // // Querry
-      // const { rows } = await db.query('SELECT isbn, title, genre FROM books');
-      // req.books = rows;
-      // res.render('books/bookListView',
-      //   {
-      //     title: 'List of Books',
-      //     nav,
-      //     books: req.books,
-      //   });
       // Querry
-      req.books = await bookService.getAllBooks();
+      const { rows } = await bookService.getAllBooks();
+      req.books = rows;
       res.render('books/bookListView',
         {
           title: 'List of Books',
