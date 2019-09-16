@@ -1,5 +1,5 @@
 const assert = require('assert');
-const bookContorller = require('../../src/controllers/bookController');
+const bookController = require('../../src/controllers/bookController');
 
 describe('bookController', () => {
   describe('useMiddleware()', () => {
