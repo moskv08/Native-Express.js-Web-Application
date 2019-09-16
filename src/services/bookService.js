@@ -1,5 +1,6 @@
 // const debug = require('debug')('app:bookService');
 const db = require('../db');
+
 // Responsible for handling books
 function bookService() {
   // Get all books from database
