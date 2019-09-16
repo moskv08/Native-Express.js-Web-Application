@@ -18,8 +18,8 @@ The handle third-party-API's the promise based HTTP client [Axios](https://www.n
 
 #### Debugging
 
-To do smart path joining of relative paths **Path** was used here.
-Also the following npm modules haven been used to have colorized debuggin enabled:
+To do smart path joining of relative paths, **Path** was used here.
+Also the following npm modules haven been used to have a smart kind of debugging enabled:
 
 1) **Debug**: Used to display information in debug mode (replaced console.log)
 2) **Chalk**: Colorize debug messages
@@ -37,6 +37,11 @@ So partly the _.eslintrc.js_ configuration file looks like as follows:
 };
 ```
 
+#### Testing
+
+Unit- and Integration-Testing was implemented with the **Mocha Test Framework**. All tests are stored in a dedicated _/test_ folder
+and are grouped by the same strucutre as in the _/src_ folder.  
+
 ### How to run the App
 
 1) Just run a simple
@@ -49,6 +54,11 @@ npm install
 hostname:port:database:username:password
 ```
 Alternatively define your password also in the _.env_ file (Not recommended).
+
+3) Spin up your **PostgreSQL** database by using the _.sql_ script.
+```
+/sql_script/dbschema.sql
+```
 
 **Linux** users simply type **npm start** to spin up the app.
 If you're on **Windows** use the following home grown script:
