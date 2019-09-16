@@ -1,37 +1,19 @@
 // Bring in modules
 const express = require('express');
-const db = require('../db');
-// const chalk = require('chalk');
-// const debug = require('debug')('app:bookRoutes');
+const authorController = require('../controllers/authorController');
+const authorService = require('../services/authorService');
 
 const authorRouter = express.Router();
 
 function router(nav) {
+  // Bring in functions as objects
+  const { useMiddleware, getAllAuthors } = authorController(authorService, nav);
+
   // Protect the route
-  authorRouter.use((req, res, next) => {
-    if (req.user) {
-      next();
-    } else {
-      res.redirect('/');
-    }
-  });
-  // Get routes for a list of books
-  authorRouter.route('/')
-    .all((req, res, next) => {
-      (async function query() {
-        // Querry
-        const { rows } = await db.query('SELECT * FROM authors');
-        req.authors = rows;
-        next();
-      }());
-    }).get((req, res) => {
-      res.render('authors/authorListView',
-        {
-          title: 'List of Authors',
-          nav,
-          authors: req.authors,
-        });
-    });
+  authorRouter.use(useMiddleware);
+
+  // Get routes for a list of authors
+  authorRouter.route('/').get(getAllAuthors);
 
   return authorRouter;
 }
