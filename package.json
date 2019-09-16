@@ -4,7 +4,7 @@
   "description": "A web application build with Node.js and Express",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha './test/**/*.spec.js'",
     "start": "DEBUG=app:* nodemon app.js",
     "starwin": "set DEBUG=app, app:* & nodemon app.js",
     "lint": "./node_modules/.bin/eslint app.js src/routes/**"
