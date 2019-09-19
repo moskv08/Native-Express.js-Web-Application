@@ -1,11 +1,11 @@
-const debug = require('debug')('app');
+// const debug = require('debug')('app');
 // Main router modul
 const nav = [
   { title: 'Books', link: '/books' },
   { title: 'Authors', link: '/authors' },
 ];
 
-// const quoteService = require('../services/quoteService');
+const quoteService = require('../services/quoteService');
 
 const authRouter = require('./authRoutes')(nav);
 const bookRouter = require('./bookRoutes')(nav);
@@ -20,10 +20,12 @@ const mountRoutes = (app) => {
   // Start page
   app.get('/', (req, res) => {
     (async function query() {
-      // const quote = await quoteService.getQuote();
-      const quote = 'Hello';
-      debug(quote);
-      res.render('index', { title: 'Welcome to BookRingo', quote, nav });
+      try {
+        const quote = await quoteService.getQuote();
+        res.render('index', { title: 'Welcome to BookRingo', quote: quote.result, nav });
+      } catch (error) {
+        res.render('index', { title: 'Welcome to BookRingo', quote: error, nav });
+      }
     }());
   });
 };
