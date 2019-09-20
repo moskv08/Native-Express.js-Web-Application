@@ -26,6 +26,7 @@ function bookController(bookService, nav) {
         });
     }());
   }
+
   // Get a single book from database by id
   function getBookById(req, res) {
     (async function query() {
