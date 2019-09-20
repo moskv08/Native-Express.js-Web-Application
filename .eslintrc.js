@@ -2,7 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    jasmine: true,
+    mocha: true,
   },
   extends: [
     'airbnb-base',
@@ -16,5 +16,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    "prefer-arrow-callback": "off",
+    "func-names": "off"
   },
 };
