@@ -1,6 +1,6 @@
 // Unit Tests for the Book service
-const { sinon, chai } = require('../testModules');
-const bookService = require('../../src/services/bookService');
+const { chai } = require('../testModules');
+// const bookService = require('../../src/services/bookService');
 
 // Add prototyp for should
 chai.should();
