@@ -39,8 +39,11 @@ So partly the _.eslintrc.js_ configuration file looks like as follows:
 
 #### Testing
 
-Unit- and Integration-Testing was implemented with the **Mocha Test Framework**. All tests are stored in a dedicated _/test_ folder
-and are grouped by the same strucutre as in the _/src_ folder.  
+Unit- and Integration-Testing was implemented with the **Mocha Test Framework**. All tests are stored in a dedicated _/test_ folder and are grouped by the same strucutre as in the _/src_ folder. The following modules are used to make testing more smart:
+  
+- **Chai**: BDD / TDD assertion library for node
+- **Sinon**: Standalone test spies, stubs and mocks for JavaScript. 
+
 
 ### How to run the App
 
