@@ -1,6 +1,4 @@
 // const debug = require('debug')('app:bookController');
-// Bring in dbcontext
-const db = require('../db');
 
 function bookController(bookService, nav) {
   // Protect routes
@@ -32,7 +30,7 @@ function bookController(bookService, nav) {
     (async function query() {
       const { id } = req.params;
       // Querry
-      const { rows } = await db.query('SELECT * FROM books b INNER JOIN authors a ON (b.author_id = a.author_id) WHERE isbn = $1', [id]);
+      const { rows } = await bookService.getBookById(id);
       [req.book] = rows; // Use array destructuring
       res.render('books/bookItemView',
         {
