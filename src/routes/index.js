@@ -3,6 +3,7 @@
 const nav = [
   { title: 'Books', link: '/books' },
   { title: 'Authors', link: '/authors' },
+  { title: 'My Profile', link: '/auth/profile' },
 ];
 
 const quoteService = require('../services/quoteService');
